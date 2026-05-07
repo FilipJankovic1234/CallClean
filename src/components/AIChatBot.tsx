@@ -5,9 +5,7 @@ import { streamAIResponse } from '../services/geminiService';
 
 const AIChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<{ role: 'user' | 'ai'; content: string }[]>([
-    { role: 'ai', content: 'Dobar dan! Ja sam Vaš Call Clean asistent. Kako Vam mogu pomoći oko čišćenja Vašeg prostora?' }
-  ]);
+  const [messages, setMessages] = useState<{ role: 'user' | 'ai'; content: string }[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -24,16 +22,19 @@ const AIChatBot = () => {
 
     const userMessage = input.trim();
     setInput('');
-    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    const updatedMessages = [...messages, { role: 'user' as const, content: userMessage }];
+    setMessages(updatedMessages);
     setIsLoading(true);
 
     // Initial AI message placeholder for streaming
     setMessages(prev => [...prev, { role: 'ai', content: '' }]);
 
-    await streamAIResponse(userMessage, (fullText) => {
+    await streamAIResponse(updatedMessages, (fullText) => {
       setMessages(prev => {
         const newMessages = [...prev];
-        newMessages[newMessages.length - 1] = { role: 'ai', content: fullText };
+        if (newMessages.length > 0) {
+          newMessages[newMessages.length - 1] = { role: 'ai' as const, content: fullText };
+        }
         return newMessages;
       });
       setIsLoading(false);
@@ -96,6 +97,33 @@ const AIChatBot = () => {
               ref={scrollRef}
               className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-hide"
             >
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="flex justify-start"
+              >
+                <div className="bg-white/5 p-4 rounded-2xl text-sm border border-white/5 font-light leading-relaxed text-white/80">
+                  Dobar dan! Ja sam Vaš Call Clean asistent. Kako Vam mogu pomoći oko čišćenja Vašeg prostora?
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {['Cenovnik', 'Usluge', 'Dubinsko čišćenje', 'Kontakt'].map((q) => (
+                      <button
+                        key={q}
+                        onClick={() => {
+                          setInput(q);
+                          // We trigger a slight delay to allow the user to see the input before auto-submitting
+                          setTimeout(() => {
+                            const btn = document.getElementById('chat-submit-btn');
+                            btn?.click();
+                          }, 10);
+                        }}
+                        className="text-[10px] px-3 py-1.5 bg-white/5 hover:bg-cyan-500/20 border border-white/10 rounded-full text-white/60 hover:text-cyan-400 transition-all active:scale-95 italic font-bold tracking-widest uppercase"
+                      >
+                        {q}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
               {messages.map((msg, i) => (
                 <motion.div
                   key={i}
@@ -134,6 +162,7 @@ const AIChatBot = () => {
                 className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-hidden focus:border-cyan-400 transition-all placeholder:text-white/20"
               />
               <button
+                id="chat-submit-btn"
                 type="submit"
                 disabled={!input.trim() || isLoading}
                 className="w-12 h-12 bg-cyan-500 text-white rounded-xl flex items-center justify-center hover:bg-cyan-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed group"
