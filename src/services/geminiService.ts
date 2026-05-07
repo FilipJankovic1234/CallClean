@@ -8,7 +8,7 @@ const SYSTEM_INSTRUCTION = "Ti si premium AI asistent za firmu 'CALL CLEAN' koja
 export const streamAIResponse = async (prompt: string, onChunk: (text: string) => void) => {
   try {
     const response = await ai.models.generateContentStream({
-      model: "gemini-2.0-flash",
+      model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
