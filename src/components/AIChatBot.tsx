@@ -29,16 +29,33 @@ const AIChatBot = () => {
     // Initial AI message placeholder for streaming
     setMessages(prev => [...prev, { role: 'ai', content: '' }]);
 
-    await streamAIResponse(updatedMessages, (fullText) => {
+    setIsLoading(true);
+
+    try {
+      await streamAIResponse(updatedMessages, (fullText) => {
+        setMessages(prev => {
+          const newMessages = [...prev];
+          if (newMessages.length > 0) {
+            newMessages[newMessages.length - 1] = { role: 'ai' as const, content: fullText };
+          }
+          return newMessages;
+        });
+      });
+    } catch (error) {
+      console.error("Chat Error:", error);
       setMessages(prev => {
         const newMessages = [...prev];
         if (newMessages.length > 0) {
-          newMessages[newMessages.length - 1] = { role: 'ai' as const, content: fullText };
+          newMessages[newMessages.length - 1] = { 
+            role: 'ai', 
+            content: "Izvinite, trenutno imamo tehničkih poteškoća. Molimo vas da nas kontaktirate na 065 320 1671." 
+          };
         }
         return newMessages;
       });
+    } finally {
       setIsLoading(false);
-    });
+    }
   };
 
   return (

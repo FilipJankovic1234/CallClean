@@ -33,23 +33,16 @@ export const streamAIResponse = async (
   onChunk: (text: string) => void
 ) => {
   try {
-    // Transform history for Gemini format
-    const history = messages.slice(0, -1).map(msg => ({
-      role: msg.role === 'user' ? 'user' : 'model',
-      parts: [{ text: msg.content }]
-    }));
-
-    const lastMessage = messages[messages.length - 1].content;
-
-    const chat = ai.chats.create({
+    const response = await ai.models.generateContentStream({
       model: "gemini-3-flash-preview",
+      contents: messages.map(msg => ({
+        role: msg.role === 'user' ? 'user' : 'model',
+        parts: [{ text: msg.content }]
+      })),
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
       },
-      history: history as any,
     });
-
-    const response = await chat.sendMessageStream({ message: lastMessage });
 
     let fullText = "";
     for await (const chunk of response) {
@@ -62,4 +55,3 @@ export const streamAIResponse = async (
     onChunk("Izvinite, trenutno imamo tehničkih poteškoća sa AI asistentom. Molimo vas da nas kontaktirate direktno na 065 320 1671 ili putem kontakt forme.");
   }
 };
-

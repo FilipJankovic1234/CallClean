@@ -18,7 +18,7 @@ const LoadingScreen = () => {
         </div>
         <motion.div
           className="h-0.5 bg-brand-accent w-0"
-          animate={{ w: '100%' }}
+          animate={{ width: '100%' }}
           transition={{ duration: 1.5, ease: 'easeInOut' }}
         />
       </motion.div>
