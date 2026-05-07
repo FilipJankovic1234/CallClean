@@ -34,22 +34,14 @@ const Navbar = () => {
           href="#"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-4 group"
+          className="flex items-center group"
         >
-          <div className="relative w-28 h-28 md:w-36 md:h-36 flex items-center justify-center -my-4 md:-my-6">
+          <div className="relative w-32 h-32 md:w-48 md:h-48 flex items-center justify-center -my-6 md:-my-10 -ml-4">
             <img 
               src="/logo.svg" 
               alt="CALL CLEAN Logo" 
-              className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(34,211,238,0.3)] group-hover:scale-110 transition-transform duration-500"
+              className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(34,211,238,0.3)] group-hover:scale-105 transition-transform duration-500"
             />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-white text-xl md:text-2xl font-serif font-black tracking-tighter leading-none flex items-center">
-              CALL<span className="text-cyan-400 group-hover:text-blue-400 transition-colors">CLEAN</span>
-            </span>
-            <span className="text-[8px] md:text-[10px] text-white/40 font-bold uppercase tracking-[0.4em] mt-1 italic">
-              Elite Cleaning
-            </span>
           </div>
         </motion.a>
 

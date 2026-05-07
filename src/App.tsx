@@ -18,7 +18,6 @@ import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
 import CustomCursor from './components/CustomCursor';
 import LoadingScreen from './components/LoadingScreen';
-import AIChatBot from './components/AIChatBot';
 import { Toaster } from 'react-hot-toast';
 
 export default function App() {
@@ -67,7 +66,6 @@ export default function App() {
             <Contact />
             <Footer />
             <FloatingButtons />
-            <AIChatBot />
           </motion.main>
         )}
       </AnimatePresence>
