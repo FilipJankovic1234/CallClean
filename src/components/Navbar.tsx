@@ -26,17 +26,17 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-[90] transition-all duration-500 ${
-        scrolled ? 'py-4 glass border-b border-white/5 shadow-2xl' : 'py-8 bg-transparent'
+        scrolled ? 'py-3 glass border-b border-white/5 shadow-2xl' : 'py-5 md:py-8 bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
         <motion.a
           href="#"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center group"
         >
-          <div className="relative w-32 h-32 md:w-48 md:h-48 flex items-center justify-center -my-6 md:-my-10 -ml-4">
+          <div className="relative w-28 h-28 md:w-36 md:h-36 flex items-center justify-center -my-4 md:-my-6 -ml-4">
             <img 
               src="/logo.svg" 
               alt="CALL CLEAN Logo" 
@@ -88,12 +88,12 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden glass border-t border-brand-accent/10 overflow-hidden"
           >
-            <div className="flex flex-col p-6 gap-6">
+            <div className="flex flex-col p-6 gap-6 bg-brand-dark/95 backdrop-blur-xl">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-lg font-display font-medium text-brand-dark"
+                  className="text-lg font-display font-medium text-white hover:text-cyan-400 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
@@ -101,7 +101,7 @@ const Navbar = () => {
               ))}
               <a
                 href="tel:+381653201671"
-                className="w-full py-4 bg-brand-accent text-white rounded-xl flex items-center justify-center gap-3 font-bold"
+                className="w-full py-4 bg-linear-to-r from-cyan-500 to-blue-600 text-white rounded-xl flex items-center justify-center gap-3 font-bold shadow-lg shadow-cyan-500/20"
               >
                 <Phone size={18} /> POZOVI ODMAH
               </a>

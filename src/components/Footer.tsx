@@ -12,21 +12,13 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           <div className="col-span-1 lg:col-span-1">
-            <a href="#" className="flex items-center gap-4 mb-8 group">
-              <div className="relative w-16 h-16 flex items-center justify-center">
+            <a href="#" className="flex items-center mb-8 group">
+              <div className="relative w-24 h-24 flex items-center justify-center -ml-4">
                 <img 
                   src="/logo.svg" 
                   alt="CALL CLEAN Logo" 
                   className="w-full h-full object-contain group-hover:scale-105 transition-transform"
                 />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-white text-xl font-serif font-black tracking-tighter leading-none">
-                  CALL<span className="text-cyan-400">CLEAN</span>
-                </span>
-                <span className="text-[6px] text-white/40 font-bold uppercase tracking-[0.4em] mt-0.5 italic">
-                  Elite Cleaning
-                </span>
               </div>
             </a>
             <p className="text-white/40 text-sm leading-relaxed font-light mb-8 max-w-xs">

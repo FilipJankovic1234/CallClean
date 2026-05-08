@@ -89,7 +89,7 @@ const Services = () => {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, i) => (
             <motion.div
               key={i}
@@ -97,26 +97,26 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
               viewport={{ once: true }}
-              className="group relative h-[450px] rounded-[40px] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-500"
+              className="group relative h-[350px] md:h-[450px] rounded-[30px] md:rounded-[40px] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-500"
             >
               <img
                 src={service.image}
                 alt={service.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 md:opacity-90 group-hover:opacity-100"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-brand-dark/80 via-brand-dark/20 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-brand-dark/90 via-brand-dark/30 to-transparent" />
               
-              <div className="absolute inset-0 p-10 flex flex-col justify-end">
-                <div className="mb-6 inline-flex items-center justify-center w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300">
+              <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
+                <div className="mb-4 md:mb-6 inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 bg-white/10 backdrop-blur-md rounded-xl md:rounded-2xl text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300">
                   {service.icon}
                 </div>
-                <h3 className="text-2xl font-serif font-bold text-white mb-3 group-hover:translate-x-2 transition-transform duration-300">
+                <h3 className="text-xl md:text-2xl font-serif font-bold text-white mb-2 md:mb-3 group-hover:translate-x-2 transition-transform duration-300">
                   {service.title}
                 </h3>
-                <p className="text-white/50 text-sm leading-relaxed mb-6 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 font-light">
+                <p className="text-white/70 md:text-white/50 text-xs md:text-sm leading-relaxed mb-4 md:mb-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:translate-y-4 md:group-hover:translate-y-0 transition-all duration-500 font-light">
                   {service.desc}
                 </p>
-                <div className="h-[1px] w-0 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-700" />
+                <div className="h-[1px] w-full md:w-0 bg-gradient-to-r from-cyan-400 to-blue-500 md:group-hover:w-full transition-all duration-700" />
               </div>
 
               {/* Hover Glow */}

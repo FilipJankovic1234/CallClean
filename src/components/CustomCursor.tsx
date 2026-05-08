@@ -14,6 +14,7 @@ const CustomCursor = () => {
   const dotSpringY = useSpring(mouseY, dotSpringConfig);
 
   const [isHovering, setIsHovering] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     mouseX.set(e.clientX);
@@ -21,6 +22,11 @@ const CustomCursor = () => {
   }, [mouseX, mouseY]);
 
   useEffect(() => {
+    const checkTouch = () => {
+      setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    };
+    checkTouch();
+
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (
@@ -45,6 +51,8 @@ const CustomCursor = () => {
       document.body.classList.remove('custom-cursor-active');
     };
   }, [handleMouseMove]);
+
+  if (isTouchDevice) return null;
 
   return (
     <>

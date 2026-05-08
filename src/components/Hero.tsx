@@ -8,7 +8,7 @@ const Hero = () => {
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-brand-dark">
+    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-brand-dark py-20 md:py-0">
       {/* Background with Parallax */}
       <motion.div style={{ y: y1 }} className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/40 z-10" />
@@ -37,15 +37,15 @@ const Hero = () => {
         className="absolute bottom-1/4 -right-20 w-80 h-80 bg-blue-500/20 rounded-full blur-[120px] z-0"
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-20">
-        <div className="flex-1 text-left">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 md:pt-0 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div className="flex-1 text-left w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="inline-block px-4 py-1.5 mb-8 border border-cyan-400/30 rounded-full bg-cyan-400/5 backdrop-blur-sm"
+            className="inline-block px-4 py-1.5 mb-6 md:mb-8 border border-cyan-400/30 rounded-full bg-cyan-400/5 backdrop-blur-sm"
           >
-            <span className="text-cyan-400 text-[10px] uppercase tracking-[0.4em] font-bold italic">
+            <span className="text-cyan-400 text-[10px] md:text-[11px] uppercase tracking-[0.4em] font-bold italic">
               Ekskluzivni servis u Beogradu
             </span>
           </motion.div>
@@ -54,7 +54,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-6xl md:text-[84px] font-serif leading-[0.9] tracking-tighter mb-8"
+            className="text-5xl md:text-[84px] font-serif leading-[0.9] tracking-tighter mb-6 md:mb-8"
           >
             Profesionalno čišćenje <br />
             <span className="italic text-white/50">koje vaš prostor zaslužuje.</span>
@@ -73,18 +73,18 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center gap-6"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6"
           >
             <a
               href="#kontakt"
-              className="px-12 py-5 bg-linear-to-r from-cyan-500 to-blue-600 text-white font-bold text-sm uppercase tracking-widest rounded-xl transition-all hover:scale-105 shadow-xl shadow-cyan-500/20 active:scale-95"
+              className="px-10 py-4 md:px-12 md:py-5 bg-linear-to-r from-cyan-500 to-blue-600 text-white font-bold text-xs md:text-sm uppercase tracking-widest rounded-xl transition-all hover:scale-105 shadow-xl shadow-cyan-500/20 active:scale-95 text-center"
             >
               Zakaži Termin
             </a>
             
             <a
               href="#usluge"
-              className="px-12 py-5 border border-white/10 bg-white/5 backdrop-blur-sm text-white font-bold text-sm uppercase tracking-widest rounded-xl hover:bg-white/10 transition-all active:scale-95"
+              className="px-10 py-4 md:px-12 md:py-5 border border-white/10 bg-white/5 backdrop-blur-sm text-white font-bold text-xs md:text-sm uppercase tracking-widest rounded-xl hover:bg-white/10 transition-all active:scale-95 text-center"
             >
               Naše Usluge
             </a>
@@ -95,35 +95,35 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="w-full lg:w-[400px] h-[500px] rounded-[60px] border border-white/10 bg-white/5 backdrop-blur-2xl relative flex items-center justify-center p-12 overflow-hidden group shadow-2xl"
+          className="w-full lg:w-[400px] h-[300px] md:h-[500px] rounded-[30px] md:rounded-[60px] border border-white/10 bg-white/5 backdrop-blur-2xl relative flex items-center justify-center p-6 md:p-12 overflow-hidden group shadow-2xl mt-8 lg:mt-0"
         >
           <img 
             src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800"
             alt="Premium Detail"
-            className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-700"
+            className="absolute inset-0 w-full h-full object-cover opacity-10 md:opacity-20 group-hover:opacity-30 transition-opacity duration-700"
           />
           <div className="absolute inset-0 bg-brand-dark/40" />
-          <div className="absolute top-[-20px] right-[-20px] w-48 h-48 bg-cyan-400/20 rounded-full blur-[60px] group-hover:bg-cyan-400/30 transition-colors" />
+          <div className="absolute top-[-20px] right-[-20px] w-40 md:w-48 h-40 md:h-48 bg-cyan-400/20 rounded-full blur-[50px] md:blur-[60px] group-hover:bg-cyan-400/30 transition-colors" />
           <div className="relative z-10 text-center">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="text-7xl font-serif mb-3 tracking-tighter"
+              className="text-5xl md:text-7xl font-serif mb-2 md:mb-3 tracking-tighter"
             >
               99.9%
             </motion.div>
-            <div className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-8 font-bold">Zadovoljstvo klijenta</div>
-            <div className="h-[1px] w-24 mx-auto bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8" />
+            <div className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6 md:mb-8 font-bold">Zadovoljstvo klijenta</div>
+            <div className="h-[1px] w-16 md:w-24 mx-auto bg-gradient-to-r from-transparent via-white/20 to-transparent mb-6 md:mb-8" />
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.0 }}
-              className="text-5xl font-serif mb-2 tracking-tighter"
+              className="text-4xl md:text-5xl font-serif mb-1 md:mb-2 tracking-tighter"
             >
               24/7
             </motion.div>
-            <div className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Premium podrška</div>
+            <div className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Premium podrška</div>
           </div>
         </motion.div>
       </div>
