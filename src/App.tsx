@@ -5,6 +5,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -32,6 +33,7 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen">
+      <Analytics />
       <Toaster 
         position="bottom-right" 
         toastOptions={{
