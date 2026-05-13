@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { MessageCircle, Phone, MapPin, Send } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
 const Contact = () => {
@@ -70,7 +70,7 @@ const Contact = () => {
               
               <a href="https://wa.me/381653201671" className="group flex items-center gap-6">
                 <div className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-green-400 group-hover:bg-green-400 group-hover:text-black transition-all">
-                  <Mail size={24} />
+                  <MessageCircle size={24} />
                 </div>
                 <div>
                   <span className="meta-label text-xs block mb-1">WhatsApp / Viber</span>

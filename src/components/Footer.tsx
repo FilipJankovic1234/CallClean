@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Instagram, Facebook, Twitter, Linkedin, ArrowUp } from 'lucide-react';
+import { Instagram, MessageCircle, ArrowUp } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -32,9 +32,7 @@ const Footer = () => {
             <div className="flex gap-4">
               {[
                 { Icon: Instagram, href: "https://www.instagram.com/ciscenje_call_clean1/" },
-                { Icon: Facebook, href: "#" },
-                { Icon: Twitter, href: "#" },
-                { Icon: Linkedin, href: "#" }
+                { Icon: MessageCircle, href: "https://wa.me/381653201671" }
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
