@@ -7,22 +7,27 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-brand-dark pt-24 pb-12 border-t border-white/5">
+    <footer className="bg-brand-dark pt-32 pb-12 border-t border-white/5 relative overflow-hidden">
+      {/* Decorative Gradient */}
+      <div className="absolute bottom-0 right-0 w-1/3 h-1/2 bg-cyan-400/5 blur-[120px] pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-32">
           <div className="col-span-1 lg:col-span-1">
-            <a href="#" className="flex items-center mb-8 group">
-              <div className="relative w-24 h-24 flex items-center justify-center -ml-4">
+            <a href="#" className="flex items-center mb-10 group">
+              <div className="relative w-32 h-32 flex items-center justify-center -ml-6">
                 <img 
                   src="/logo.svg" 
                   alt="CALL CLEAN Logo" 
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform"
+                  className="w-full h-full object-contain opacity-90 group-hover:scale-105 transition-transform"
                 />
               </div>
             </a>
-            <p className="text-white/40 text-sm leading-relaxed font-light mb-8 max-w-xs">
-              Vodeća snaga u domenu profesionalnog čišćenja u Srbiji. Transformišemo prostore, podižemo standarde i gradimo poverenje kroz hiper-pedantnost.
+            <p className="text-white/40 text-sm leading-relaxed font-light mb-10 max-w-xs">
+              Elite higijenski sistemi za <span className="text-white/60">Beograd</span>. Postavljamo nove standarde u održavanju luksuznih stambenih i poslovnih objekata.
             </p>
             <div className="flex gap-4">
               {[
@@ -36,7 +41,7 @@ const Footer = () => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:bg-cyan-500 hover:border-cyan-500 hover:text-white transition-all duration-300"
+                  className="w-12 h-12 rounded-2xl glass flex items-center justify-center text-white/40 hover:bg-cyan-400 hover:text-white transition-all duration-500"
                 >
                   <Icon size={18} />
                 </a>
@@ -45,12 +50,17 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-400 mb-8 italic">Usluge</h4>
-            <ul className="space-y-4">
-              {['Čišćenje stanova', 'Dubinsko čišćenje', 'Poslovni prostori', 'Luksuzno održavanje'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-xs text-white/40 hover:text-cyan-400 transition-colors uppercase tracking-widest font-bold">
-                    {item}
+            <h4 className="meta-label text-cyan-400 mb-10">Usluge</h4>
+            <ul className="space-y-5">
+              {[
+                { label: 'Čišćenje stanova', href: '#usluge' },
+                { label: 'Poslovni prostori', href: '#usluge' },
+                { label: 'Dubinsko pranje', href: '#usluge' },
+                { label: 'Prozori i stakla', href: '#usluge' }
+              ].map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-xs text-white/30 hover:text-cyan-400 transition-colors uppercase tracking-[0.2em] font-bold">
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -58,46 +68,61 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-400 mb-8 italic">Kompanija</h4>
-            <ul className="space-y-4">
-              {['O nama', 'Galerija radova', 'Karijera', 'Politika privatnosti'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-xs text-white/40 hover:text-cyan-400 transition-colors uppercase tracking-widest font-bold">
-                    {item}
+            <h4 className="meta-label text-cyan-400 mb-10">Brzi Linkovi</h4>
+            <ul className="space-y-5">
+              {[
+                { label: 'Zašto Mi?', href: '#zasto-mi' },
+                { label: 'Galerija Radova', href: '#galerija' },
+                { label: 'FAQ - Pitanja', href: '#faq' },
+                { label: 'Kontakt Portal', href: '#kontakt' }
+              ].map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-xs text-white/30 hover:text-cyan-400 transition-colors uppercase tracking-[0.2em] font-bold">
+                    {link.label}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="relative">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-400 mb-8 italic">Newsletter</h4>
-            <p className="text-xs text-white/40 mb-6 font-light uppercase tracking-widest">Prijavite se za elite savete.</p>
-            <div className="relative">
-              <input
-                type="email"
-                placeholder="Vaša email adresa"
-                className="w-full px-6 py-4 bg-white/5 rounded-2xl border border-white/10 focus:outline-hidden focus:border-cyan-400 transition-all text-xs text-white"
-              />
-              <button className="absolute right-2 top-2 bottom-2 px-4 bg-cyan-400 text-white text-[10px] font-bold uppercase tracking-widest rounded-xl hover:bg-cyan-500 transition-colors">
-                Pridruži se
-              </button>
+          <div>
+            <h4 className="meta-label text-cyan-400 mb-10">Lokacije</h4>
+            <p className="text-[10px] text-white/40 font-mono leading-loose uppercase tracking-widest">
+              Novi Beograd • Vračar • Zvezdara • Voždovac • Dedinje • Senjak • Zemun • Centar • Mali Mokri Lug
+            </p>
+            <div className="mt-10 p-6 glass-dark rounded-3xl border-white/5">
+              <span className="text-[10px] text-cyan-400 font-bold block mb-2 uppercase">Call Centar</span>
+              <a href="tel:+381653201671" className="text-xl font-serif font-bold tracking-tighter">065 320 1671</a>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-white/20 text-[10px] uppercase font-bold tracking-[0.2em]">
-            © 2026 CALL CLEAN PREMIUM. Sva prava zadržana.
-          </p>
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-10">
+          <div className="flex flex-col md:flex-row items-center gap-6">
+            <p className="text-white/20 text-[10px] uppercase font-bold tracking-[0.2em]">
+              © {currentYear} CALL CLEAN BEOGRAD. PREMIUM HYGIENE SYSTEMS.
+            </p>
+            <div className="flex gap-4">
+              <a href="#" className="text-[8px] uppercase tracking-widest text-white/10 hover:text-white/30 transition-colors">Politika Privatnosti</a>
+              <a href="#" className="text-[8px] uppercase tracking-widest text-white/10 hover:text-white/30 transition-colors">Uslovi Korišćenja</a>
+            </div>
+          </div>
+          
           <motion.button
             whileHover={{ y: -5 }}
             onClick={scrollToTop}
-            className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:bg-cyan-500 hover:text-white transition-all shadow-xl"
+            className="w-16 h-16 rounded-3xl glass flex items-center justify-center text-white/20 hover:bg-cyan-400 hover:text-white transition-all shadow-premium"
           >
-            <ArrowUp size={22} />
+            <ArrowUp size={20} />
           </motion.button>
         </div>
+      </div>
+      
+      {/* SEO Bottom Text */}
+      <div className="max-w-7xl mx-auto px-6 mt-16 pb-8">
+        <p className="text-[8px] leading-relaxed text-white/5 uppercase tracking-[0.2em] text-justify">
+          Profesionalno čišćenje stanova Beograd, čišćenje kuća, kancelarija i poslovnih prostora. Dubinsko pranje nameštaja Novi Beograd, Zvezdara, Voždovac. Servis za čišćenje Beograd sa garancijom kvaliteta. Generalno čišćenje nakon renoviranja i građevinskih radova. Pranje prozora na visini. Elite hygiene solutions for Belgrade.
+        </p>
       </div>
     </footer>
   );

@@ -4,79 +4,81 @@ import { MessageSquare, ClipboardCheck, Brush, Heart } from 'lucide-react';
 
 const steps = [
   {
-    title: 'Kontakt & Upit',
-    desc: 'Pošaljite nam upit putem sajta ili nas pozovite. Naš tim odgovara u roku od 30 minuta.',
-    icon: <MessageSquare className="w-6 h-6" />
+    title: 'Consultation',
+    desc: 'Pošaljite nam upit. Naši savetnici analiziraju vaše specifične potrebe i kvadraturu prostora.',
+    icon: <MessageSquare size={24} />
   },
   {
-    title: 'Besplatna Procena',
-    desc: 'Vršimo brzu procenu vašeg prostora i kreiramo personalizovan plan čišćenja.',
-    icon: <ClipboardCheck className="w-6 h-6" />
+    title: 'Precision Plan',
+    desc: 'Kreiramo personalizovan protokol čišćenja sa fokusom na kritične tačke i materijale.',
+    icon: <ClipboardCheck size={24} />
   },
   {
-    title: 'Premium Čišćenje',
-    desc: 'Naši profesionalci dolaze sa kompletnom opremom i transformišu vaš prostor.',
-    icon: <Brush className="w-6 h-6" />
+    title: 'Elite Execution',
+    desc: 'Naš tim dolazi na teren sa najmodernijom opremom i transformiše prostor do perfekcije.',
+    icon: <Brush size={24} />
   },
   {
-    title: 'Potpuno Zadovoljstvo',
-    desc: 'Završna provera kvaliteta sa klijentom. Vaša sreća je naša najveća nagrada.',
-    icon: <Heart className="w-6 h-6" />
+    title: 'Final Audit',
+    desc: 'Zajednička verifikacija kvaliteta. Vaše zadovoljstvo je potvrda naše premium usluge.',
+    icon: <Heart size={24} />
   }
 ];
 
 const Process = () => {
   return (
-    <section id="proces" className="py-24 bg-brand-dark relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
-        <img 
-          src="https://images.unsplash.com/photo-1581578736444-5954ef12f4e8?auto=format&fit=crop&q=80&w=2000" 
-          alt="Process Background" 
-          className="w-full h-full object-cover"
-        />
-      </div>
+    <section id="proces" className="py-32 bg-brand-dark relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-1/3 h-full border-l border-white/5 pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-24">
-          <span className="text-cyan-400 font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block italic">
-            PUT DO SAVRŠENSTVA
-          </span>
-          <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 tracking-tighter">
-            Kako kreiramo <br /> <span className="italic text-white/50">vašu oazu svežine.</span>
-          </h2>
+        <div className="flex flex-col items-center text-center mb-32">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="meta-label text-cyan-400 mb-6"
+          >
+            Temporal Roadmap
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-8xl font-serif font-black mb-8 leading-[0.85] uppercase italic"
+          >
+            Arhitektura <br /> <span className="text-white/20">Čistoće.</span>
+          </motion.h2>
+          <div className="h-20 w-[1px] bg-linear-to-b from-cyan-400 to-transparent" />
         </div>
 
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/5 hidden lg:block -translate-y-1/2" />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {steps.map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05 }}
-                viewport={{ once: true }}
-                className="relative z-10 group"
-              >
-                <div className="bg-white/5 p-10 rounded-[40px] border border-white/10 group-hover:border-cyan-400/30 backdrop-blur-sm transition-all duration-500 h-full">
-                  <div className="w-16 h-16 bg-white/10 text-cyan-400 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300 relative">
-                    <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-cyan-400 text-white flex items-center justify-center font-bold text-xs">
-                      0{i + 1}
-                    </div>
-                    {step.icon}
-                  </div>
-                  <h3 className="text-xl font-serif font-bold text-white mb-5 group-hover:text-cyan-400 transition-colors tracking-tight">
-                    {step.title}
-                  </h3>
-                  <p className="text-white/40 text-sm leading-relaxed font-light">
-                    {step.desc}
-                  </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/5 rounded-[60px] overflow-hidden">
+          {steps.map((step, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="group p-10 md:p-14 bg-brand-dark relative flex flex-col justify-between h-[450px]"
+            >
+              <div className="absolute top-0 right-0 p-10 md:p-14 font-mono text-[80px] font-bold text-white/[0.03] group-hover:text-cyan-400/[0.05] transition-colors leading-none">
+                0{i + 1}
+              </div>
+
+              <div className="relative z-10">
+                <div className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-cyan-400 mb-8 group-hover:bg-cyan-400 group-hover:text-black transition-all">
+                  {step.icon}
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+
+              <div className="relative z-10">
+                <h3 className="text-2xl md:text-3xl font-serif font-bold text-white mb-6 uppercase tracking-tighter">
+                  {step.title}
+                </h3>
+                <p className="text-white/40 text-sm leading-relaxed font-light font-sans max-w-xs transition-colors group-hover:text-white/60">
+                  {step.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

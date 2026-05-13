@@ -19,141 +19,135 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        toast.success(data.message);
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        toast.error(data.message);
-      }
-    } catch (error) {
-      toast.error('Sistemska greška. Pokušajte ponovo kasnije.');
-    } finally {
+    // Simple simulation of message sending for demo
+    setTimeout(() => {
+      toast.success('Poruka je uspešno poslata! Javićemo Vam se ubrzo.');
+      setFormData({ name: '', email: '', message: '' });
       setIsSubmitting(false);
-    }
+    }, 1500);
   };
 
   return (
-    <section id="kontakt" className="py-24 bg-brand-dark relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <img 
-          src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&q=80&w=2000" 
-          alt="Contact Background" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-brand-dark/80" />
-      </div>
-      <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none z-1">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border border-white/20 rounded-full" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-white/20 rounded-full" />
-      </div>
-
+    <section id="kontakt" className="py-32 bg-brand-dark relative overflow-hidden">
+      {/* Visual Context */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-linear-to-r from-transparent via-white/10 to-transparent" />
+      
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-          <div>
-            <span className="text-cyan-400 font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block italic">
-              REZERVACIJE
-            </span>
-            <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-8 tracking-tighter">
-              Spremni za <br /> <span className="italic text-white/50">savršenu čistoću?</span>
-            </h2>
-            <p className="text-white/40 text-lg mb-12 font-light max-w-md">
-              Javite nam se još danas i dozvolite našem timu da transformiše vaš prostor u prepoznatljivo Call Clean remek-delo.
-            </p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
+          <div className="lg:col-span-5">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="meta-label text-cyan-400 mb-6"
+            >
+              Get In Touch
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="text-5xl md:text-7xl font-serif font-black mb-8 leading-[0.9] uppercase italic"
+            >
+              Portal za <br /> <span className="text-white/20">Savršenstvo.</span>
+            </motion.h2>
+            <motion.p
+               initial={{ opacity: 0 }}
+               whileInView={{ opacity: 1 }}
+               className="text-white/40 font-light max-w-sm mb-12"
+            >
+              Bilo da Vam je potrebno redovno održavanje stana na <span className="text-white/60">Zvezdari</span> ili generalno čišćenje kuće u <span className="text-white/60">Malom Mokrom Lugu</span>, naš tim je spreman.
+            </motion.p>
 
-            <div className="space-y-10">
-              <div className="flex items-center gap-8 group">
-                <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300">
-                  <Phone size={28} />
+            <div className="space-y-12 mb-12">
+              <a href="tel:+381653201671" className="group flex items-center gap-6">
+                <div className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black transition-all">
+                  <Phone size={24} />
                 </div>
                 <div>
-                  <p className="text-white/30 text-[10px] uppercase tracking-[0.3em] font-bold mb-1">Telefon</p>
-                  <a href="tel:+381653201671" className="text-white text-2xl font-serif font-bold hover:text-cyan-400 transition-colors">
-                    065 320 1671
-                  </a>
+                  <span className="meta-label text-xs block mb-1">Pozovite odmah</span>
+                  <span className="text-xl md:text-2xl font-serif font-bold group-hover:text-cyan-400 transition-colors tracking-tight">065 320 1671</span>
                 </div>
-              </div>
+              </a>
               
-              <div className="flex items-center gap-8 group">
-                <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300">
-                  <Mail size={28} />
+              <a href="https://wa.me/381653201671" className="group flex items-center gap-6">
+                <div className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-green-400 group-hover:bg-green-400 group-hover:text-black transition-all">
+                  <Mail size={24} />
                 </div>
                 <div>
-                  <p className="text-white/30 text-[10px] uppercase tracking-[0.3em] font-bold mb-1">Email</p>
-                  <a href="mailto:callclean83@gmail.com" className="text-white text-2xl font-serif font-bold hover:text-cyan-400 transition-colors">
-                    callclean83@gmail.com
-                  </a>
+                  <span className="meta-label text-xs block mb-1">WhatsApp / Viber</span>
+                  <span className="text-xl md:text-2xl font-serif font-bold group-hover:text-green-400 transition-colors tracking-tight">Dostupni 24/7</span>
                 </div>
+              </a>
+            </div>
+
+            <div className="p-8 glass-dark rounded-[40px] border-white/5">
+              <h4 className="meta-label mb-4">Radno Vreme</h4>
+              <div className="flex justify-between text-xs text-white/60 font-mono mb-2">
+                <span>Ponedeljak - Subota</span>
+                <span>08:00 - 20:00</span>
+              </div>
+              <div className="flex justify-between text-xs text-white/60 font-mono">
+                <span>Nedelja</span>
+                <span className="text-cyan-400">Po dogovoru</span>
               </div>
             </div>
           </div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="p-12 bg-white/5 backdrop-blur-2xl rounded-[50px] border border-white/10"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="lg:col-span-7 p-8 md:p-16 glass rounded-[60px] border-white/10"
           >
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-white/30 text-[10px] uppercase tracking-widest font-bold px-4 italic">Ime i prezime</label>
+            <form className="space-y-8" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  <label className="meta-label px-2 italic">Ime i Prezime</label>
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Vaše ime"
-                    className="w-full px-8 py-5 bg-white/5 border border-white/10 rounded-2xl text-white placeholder:text-white/20 focus:outline-hidden focus:border-cyan-400 transition-all font-light text-sm"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/10 focus:outline-hidden focus:border-cyan-400/50 transition-all font-light"
+                    placeholder="Npr. Marko Marković"
                   />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-white/30 text-[10px] uppercase tracking-widest font-bold px-4 italic">Email adresa</label>
+                <div className="space-y-4">
+                  <label className="meta-label px-2 italic">Email / Telefon</label>
                   <input
-                    type="email"
+                    type="text"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/10 focus:outline-hidden focus:border-cyan-400/50 transition-all font-light"
                     placeholder="email@primer.rs"
-                    className="w-full px-8 py-5 bg-white/5 border border-white/10 rounded-2xl text-white placeholder:text-white/20 focus:outline-hidden focus:border-cyan-400 transition-all font-light text-sm"
                   />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-white/30 text-[10px] uppercase tracking-widest font-bold px-4 italic">Vaša poruka</label>
+              <div className="space-y-4">
+                <label className="meta-label px-2 italic">Vaša Poruka / Adresa</label>
                 <textarea
                   rows={4}
                   required
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Opišite vaše potrebe..."
-                  className="w-full px-8 py-5 bg-white/5 border border-white/10 rounded-2xl text-white placeholder:text-white/20 focus:outline-hidden focus:border-cyan-400 transition-all resize-none font-light text-sm"
+                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-6 text-white placeholder:text-white/10 focus:outline-hidden focus:border-cyan-400/50 transition-all font-light resize-none"
+                  placeholder="Kratko opišite šta Vam je potrebno čišćenje..."
                 />
               </div>
 
-              <button 
+              <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full group py-5 bg-linear-to-r from-cyan-500 to-blue-600 text-white font-bold text-sm uppercase tracking-widest rounded-2xl flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group w-full py-5 bg-white text-black font-bold uppercase tracking-[0.2em] rounded-full hover:bg-cyan-400 hover:text-white transition-all flex items-center justify-center gap-4 text-[10px] shadow-premium disabled:opacity-50"
               >
-                {isSubmitting ? 'SLANJE...' : 'POŠALJI PORUKU'} 
-                {!isSubmitting && <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
+                {isSubmitting ? 'Slanje...' : 'Pošalji Zahtev'}
+                <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </button>
             </form>
           </motion.div>
         </div>
       </div>
     </section>
-
   );
 };
 

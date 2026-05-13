@@ -4,20 +4,24 @@ import { Plus, Minus } from 'lucide-react';
 
 const faqs = [
   {
-    q: 'Koliko unapred treba rezervisati termin?',
-    a: 'Preporučujemo da termin zakažete 2-3 dana unapred, ali se uvek trudimo da izađemo u susret i hitnim zahtevima u roku od 24 sata.'
+    q: 'Koliko traje čišćenje stanova ili kuća?',
+    a: 'Trajanje zavisi od kvadrature i stanja prostora. Redovno čišćenje prosečnog stana traje 3-5 sati, dok generalno čišćenje nakon renoviranja može trajati ceo radni dan sa više radnika.'
   },
   {
-    q: 'Da li koristite svoju opremu i sredstva?',
-    a: 'Da, naš tim dolazi potpuno opremljen najsavremenijim mašinama i profesionalnim, ekološkim sredstvima visokog kvaliteta.'
+    q: 'Da li dolazite na adresu u svim delovima Beograda?',
+    a: 'Da, pokrivamo celu teritoriju Beograda, uključujući uži centar, Novi Beograd, Zvezdaru, Voždovac, Čukaricu, Zemun, kao i naselja poput Malog Mokrog Luga.'
   },
   {
-    q: 'Da li su vaši radnici provereni i osigurani?',
-    a: 'Apsolutno. Svaki član našeg tima prolazi rigorozne bezbednosne provere i profesionalnu obuku. Takođe, naše usluge su potpuno osigurane.'
+    q: 'Koje usluge čišćenja nudite za poslovne prostore?',
+    a: 'Nudimo redovno održavanje kancelarija, dubinsko pranje itisona, pranje staklenih fasada i prozora, kao i generalno čišćenje nakon građevinskih radova ili renoviranja poslovnih objekata.'
   },
   {
-    q: 'Koliko traje dubinsko čišćenje nameštaja?',
-    a: 'Prosečno vreme za dubinsko čišćenje ugaonog garniture je između 1.5 i 2.5 sata, zavisno od stepena zaprljanosti.'
+    q: 'Kako se vrši zakazivanje termina?',
+    a: 'Termin možete zakazati veoma brzo putem poziva, WhatsApp-a ili kontakt forme na sajtu. Preporučujemo zakazivanje 2-3 dana unapred kako biste osigurali željeni termin.'
+  },
+  {
+    q: 'Koje delove Beograda najčešće pokrivate?',
+    a: 'Iako dolazimo svuda, najviše intervencija imamo na Novom Beogradu, Vračaru, Dedinju, Zvezdari i Voždovcu gde su naši klijenti sa najvišim zahtevima za higijenu.'
   }
 ];
 
@@ -25,32 +29,42 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-24 bg-brand-dark relative overflow-hidden">
-      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[100px] -z-0" />
+    <section id="faq" className="py-32 bg-brand-dark relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <span className="text-cyan-400 font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block italic">
-            PITANJA I ODGOVORI
-          </span>
-          <h2 className="text-4xl font-serif font-bold text-white mb-4 tracking-tighter">Često postavljana pitanja.</h2>
+        <div className="flex flex-col items-center text-center mb-24">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="meta-label text-cyan-400 mb-4"
+          >
+            FAQ
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-6xl font-serif font-black mb-8 leading-tight uppercase italic"
+          >
+            Sve što Vas <br /> <span className="text-white/20">zanima.</span>
+          </motion.h2>
+          <div className="h-20 w-[1px] bg-linear-to-b from-cyan-400 to-transparent" />
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           {faqs.map((faq, i) => (
             <motion.div
               key={i}
               initial={false}
-              className={`rounded-[32px] border ${openIndex === i ? 'border-cyan-400 bg-white/5' : 'border-white/5 bg-white/2'} transition-all duration-300 overflow-hidden`}
+              className={`rounded-[40px] border border-white/5 transition-all duration-500 overflow-hidden ${openIndex === i ? 'glass-dark' : 'bg-transparent'}`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full p-8 flex items-center justify-between text-left group"
+                className="w-full p-8 md:p-10 flex items-center justify-between text-left group"
               >
-                <span className={`text-lg font-serif font-bold tracking-tight ${openIndex === i ? 'text-cyan-400' : 'text-white/70 group-hover:text-cyan-400 transition-colors'}`}>
+                <span className={`text-lg md:text-2xl font-serif font-bold tracking-tight transition-colors duration-500 ${openIndex === i ? 'text-white' : 'text-white/40 group-hover:text-white/60'}`}>
                   {faq.q}
                 </span>
-                <div className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all ${openIndex === i ? 'bg-cyan-400 border-cyan-400 text-white shadow-lg shadow-cyan-400/20' : 'border-white/10 text-white/40'}`}>
-                  {openIndex === i ? <Minus size={18} /> : <Plus size={18} />}
+                <div className={`w-12 h-12 rounded-full border flex items-center justify-center transition-all duration-500 ${openIndex === i ? 'bg-white text-black border-white' : 'border-white/10 text-white/20'}`}>
+                  {openIndex === i ? <Minus size={20} /> : <Plus size={20} />}
                 </div>
               </button>
               <AnimatePresence initial={false}>
@@ -59,9 +73,9 @@ const FAQ = () => {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <div className="p-8 pt-0 text-white/40 font-light leading-relaxed text-sm">
+                    <div className="px-8 md:px-10 pb-10 text-white/40 font-light leading-relaxed text-base">
                       {faq.a}
                     </div>
                   </motion.div>

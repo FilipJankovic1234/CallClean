@@ -5,137 +5,111 @@ import { ChevronDown, ArrowRight, Play } from 'lucide-react';
 const Hero = () => {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const opacityText = useTransform(scrollY, [0, 200], [1, 0]);
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-brand-dark py-20 md:py-0">
-      {/* Background with Parallax */}
+    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-brand-dark pt-32 pb-20 md:py-0">
+      {/* Immersive Atmospheric Background */}
       <motion.div style={{ y: y1 }} className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 bg-linear-to-b from-brand-dark/20 via-brand-dark/40 to-brand-dark z-10" />
         <img
           src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=2000"
-          alt="Luxury Interior"
+          alt="Luksuzno očišćen enterijer Beograd"
           className="w-full h-full object-cover"
         />
       </motion.div>
 
-      {/* Floating Elements */}
-      <motion.div
-        animate={{ 
-          y: [0, -20, 0],
-          opacity: [0.1, 0.2, 0.1]
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 -left-20 w-80 h-80 bg-brand-accent/30 rounded-full blur-[120px] z-0"
-      />
-      <motion.div
-        animate={{ 
-          y: [0, 20, 0],
-          opacity: [0.1, 0.2, 0.1]
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-1/4 -right-20 w-80 h-80 bg-blue-500/20 rounded-full blur-[120px] z-0"
-      />
+      {/* Dynamic Gradients */}
+      <div className="absolute inset-0 z-0 opacity-40">
+        <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-cyan-500/20 blur-[150px] animate-premium-float" />
+        <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-blue-600/10 blur-[150px] animate-premium-float" style={{ animationDelay: '2s' }} />
+      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 md:pt-0 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-        <div className="flex-1 text-left w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="inline-block px-4 py-1.5 mb-6 md:mb-8 border border-cyan-400/30 rounded-full bg-cyan-400/5 backdrop-blur-sm"
-          >
-            <span className="text-cyan-400 text-[10px] md:text-[11px] uppercase tracking-[0.4em] font-bold italic">
-              Ekskluzivni servis u Beogradu
-            </span>
-          </motion.div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          style={{ opacity: opacityText }}
+          className="mb-8"
+        >
+          <span className="meta-label text-cyan-400">Elite Cleaning Service Belgrade</span>
+        </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-[84px] font-serif leading-[0.9] tracking-tighter mb-6 md:mb-8"
-          >
-            Profesionalno čišćenje <br />
-            <span className="italic text-white/50">koje vaš prostor zaslužuje.</span>
-          </motion.h1>
+        <motion.h1
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="text-[12vw] md:text-[8vw] lg:text-[120px] font-serif font-black leading-[0.85] tracking-[-0.04em] mb-12 uppercase italic"
+        >
+          Čišćenje <br />
+          <span className="text-white/20">koje menja</span> <br />
+          Vaš <span className="text-gradient">Standard.</span>
+        </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-white/60 text-lg md:text-xl max-w-xl mb-12 leading-relaxed font-light"
-          >
-            Hiper-detaljni pristup održavanju higijene za najprestižnije enterijere. Spoj moderne tehnologije i besprekorne pedantnosti.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6"
-          >
-            <a
-              href="#kontakt"
-              className="px-10 py-4 md:px-12 md:py-5 bg-linear-to-r from-cyan-500 to-blue-600 text-white font-bold text-xs md:text-sm uppercase tracking-widest rounded-xl transition-all hover:scale-105 shadow-xl shadow-cyan-500/20 active:scale-95 text-center"
-            >
-              Zakaži Termin
-            </a>
-            
-            <a
-              href="#usluge"
-              className="px-10 py-4 md:px-12 md:py-5 border border-white/10 bg-white/5 backdrop-blur-sm text-white font-bold text-xs md:text-sm uppercase tracking-widest rounded-xl hover:bg-white/10 transition-all active:scale-95 text-center"
-            >
-              Naše Usluge
-            </a>
-          </motion.div>
-        </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+          className="max-w-2xl text-white/50 text-base md:text-lg lg:text-xl font-light leading-relaxed mb-12 md:px-0"
+        >
+          Specijalizovani smo za čišćenje najluksuznijih objekata u Beogradu. Od stanova na <span className="text-white">Novom Beogradu</span> do prestižnih rezidencija na <span className="text-white">Dedinju</span> i <span className="text-white">Zvezdari</span>.
+        </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="w-full lg:w-[400px] h-[300px] md:h-[500px] rounded-[30px] md:rounded-[60px] border border-white/10 bg-white/5 backdrop-blur-2xl relative flex items-center justify-center p-6 md:p-12 overflow-hidden group shadow-2xl mt-8 lg:mt-0"
+           initial={{ opacity: 0, y: 20 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ delay: 0.8 }}
+           className="flex flex-col sm:flex-row items-center gap-6"
         >
-          <img 
-            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800"
-            alt="Premium Detail"
-            className="absolute inset-0 w-full h-full object-cover opacity-10 md:opacity-20 group-hover:opacity-30 transition-opacity duration-700"
-          />
-          <div className="absolute inset-0 bg-brand-dark/40" />
-          <div className="absolute top-[-20px] right-[-20px] w-40 md:w-48 h-40 md:h-48 bg-cyan-400/20 rounded-full blur-[50px] md:blur-[60px] group-hover:bg-cyan-400/30 transition-colors" />
-          <div className="relative z-10 text-center">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="text-5xl md:text-7xl font-serif mb-2 md:mb-3 tracking-tighter"
-            >
-              99.9%
-            </motion.div>
-            <div className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6 md:mb-8 font-bold">Zadovoljstvo klijenta</div>
-            <div className="h-[1px] w-16 md:w-24 mx-auto bg-gradient-to-r from-transparent via-white/20 to-transparent mb-6 md:mb-8" />
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.0 }}
-              className="text-4xl md:text-5xl font-serif mb-1 md:mb-2 tracking-tighter"
-            >
-              24/7
-            </motion.div>
-            <div className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Premium podrška</div>
+          <a
+            href="#kontakt"
+            className="group relative px-12 py-5 bg-white text-black font-bold text-xs uppercase tracking-[0.2em] rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-premium"
+          >
+            <span className="relative z-10">Zakaži Besplatnu Procenu</span>
+            <div className="absolute inset-0 bg-cyan-400 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+          </a>
+          
+          <a
+            href="#usluge"
+            className="group px-12 py-5 border border-white/10 glass rounded-full text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-all flex items-center gap-3"
+          >
+            Istraži Usluge <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </a>
+        </motion.div>
+
+        {/* Local SEO Text in Hero */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-20 text-[10px] uppercase tracking-[0.3em] font-bold text-white/30"
+        >
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-white">01</span>
+            <span>Novi Beograd</span>
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-white">02</span>
+            <span>Zvezdara</span>
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-white">03</span>
+            <span>Voždovac</span>
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-white">04</span>
+            <span>Vračar</span>
           </div>
         </motion.div>
       </div>
 
       <motion.div
-        style={{ opacity }}
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2"
       >
-        <span className="text-white/40 text-[10px] uppercase tracking-[0.4em] font-medium">Scroll down</span>
-        <div className="w-[1px] h-12 bg-linear-to-b from-brand-accent to-transparent" />
+        <div className="w-[1px] h-20 bg-linear-to-b from-brand-accent to-transparent" />
       </motion.div>
     </section>
   );
