@@ -292,7 +292,7 @@
           Zakažite <span class="text-gradient">Svoj Termin</span>
         </h2>
         <p class="max-w-xl mx-auto text-white/50 text-sm md:text-base mb-10 leading-relaxed font-light">
-          Kontaktirajte nas već danas putem telefona, Vibera ili WhatsApp-a. Naš tim je dostupan od 08-20h svakog dana za brze konsultacije i besplatnu procenu.
+          Kontaktirajte nas već danas putem telefona, Vibera ili WhatsApp-a. Naš tim je dostupan od 08-20h svakog dana za brze konsultacije i rezervaciju termina.
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -315,6 +315,67 @@
           </a>
         </div>
       </section>
+
+      <!-- Contact Form Section with Web3Forms -->
+      <section class="mt-20 glass-premium rounded-[40px] p-8 md:p-12 relative overflow-hidden" id="kontakt-forma">
+        <div class="absolute -right-10 -top-10 w-40 h-40 bg-radial-glow pointer-events-none"></div>
+        <div class="max-w-xl mx-auto text-center mb-10">
+          <span class="text-xs uppercase tracking-[0.25em] font-mono font-bold text-cyan-400 mb-4 block">
+            Pošaljite Upit
+          </span>
+          <h2 class="text-3xl md:text-5xl font-serif font-bold mb-6">
+            Zatražite <span class="text-gradient">Ponudu</span>
+          </h2>
+          <p class="text-white/50 text-sm md:text-base leading-relaxed font-light">
+            Popunite formu ispod i naš tim će Vas kontaktirati u najkraćem roku sa personalizovanom ponudom za čišćenje.
+          </p>
+        </div>
+
+        <form id="contact-form-cenovnik" method="POST" action="https://api.web3forms.com/submit" class="max-w-2xl mx-auto space-y-6">
+          <input type="hidden" name="access_key" value="eb477c1a-a37f-4db0-a05a-275915bb5fd0">
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2 text-left">
+              <label class="text-xs uppercase tracking-wider text-white/60 font-mono font-bold block pl-2">Ime i Prezime</label>
+              <input 
+                type="text" 
+                name="name" 
+                required 
+                placeholder="Npr. Marko Marković"
+                class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/10 focus:outline-none focus:border-cyan-400/50 transition-all font-light"
+              >
+            </div>
+            <div class="space-y-2 text-left">
+              <label class="text-xs uppercase tracking-wider text-white/60 font-mono font-bold block pl-2">Email / Telefon</label>
+              <input 
+                type="text" 
+                name="email" 
+                required 
+                placeholder="email@primer.rs"
+                class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/10 focus:outline-none focus:border-cyan-400/50 transition-all font-light"
+              >
+            </div>
+          </div>
+
+          <div class="space-y-2 text-left">
+            <label class="text-xs uppercase tracking-wider text-white/60 font-mono font-bold block pl-2">Vaša Poruka / Adresa</label>
+            <textarea 
+              name="message" 
+              rows="4" 
+              required 
+              placeholder="Kratko opišite šta Vam je potrebno čišćenje..."
+              class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-6 text-white placeholder:text-white/10 focus:outline-none focus:border-cyan-400/50 transition-all font-light resize-none"
+            ></textarea>
+          </div>
+
+          <button 
+            type="submit" 
+            class="w-full py-5 bg-white text-black font-bold uppercase tracking-[0.2em] rounded-full hover:bg-cyan-400 hover:text-white transition-all flex items-center justify-center gap-4 text-xs shadow-premium"
+          >
+            Pošalji Zahtev
+          </button>
+        </form>
+      </section>
     </main>
 
     <!-- Footer -->
@@ -327,5 +388,48 @@
         </div>
       </div>
     </footer>
+
+    <!-- Form Submission Script -->
+    <script>
+      const form = document.getElementById('contact-form-cenovnik');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const button = form.querySelector('button[type="submit"]');
+          const originalButtonText = button.innerHTML;
+          button.disabled = true;
+          button.innerHTML = 'Slanje...';
+
+          const formData = new FormData(form);
+          const object = Object.fromEntries(formData);
+          const json = JSON.stringify(object);
+
+          fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: json
+          })
+          .then(async (response) => {
+            let jsonResponse = await response.json();
+            if (response.status == 200 && jsonResponse.success) {
+              alert('Hvala Vam! Vaša poruka je uspešno poslata. Kontaktiraćemo Vas uskoro.');
+              form.reset();
+            } else {
+              alert('Greška: Nešto je pošlo po zlu. Pokušajte ponovo.');
+            }
+          })
+          .catch(error => {
+            alert('Greška: Nešto je pošlo po zlu. Pokušajte ponovo.');
+          })
+          .then(() => {
+            button.disabled = false;
+            button.innerHTML = originalButtonText;
+          });
+        });
+      }
+    </script>
   </body>
 </html>

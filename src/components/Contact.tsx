@@ -19,12 +19,33 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
-    // Simple simulation of message sending for demo
-    setTimeout(() => {
-      toast.success('Poruka je uspešno poslata! Javićemo Vam se ubrzo.');
-      setFormData({ name: '', email: '', message: '' });
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: "eb477c1a-a37f-4db0-a05a-275915bb5fd0",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        })
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        toast.success('Hvala Vam! Vaša poruka je uspešno poslata. Kontaktiraćemo Vas uskoro.');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        toast.error('Greška: Nešto je pošlo po zlu. Pokušajte ponovo.');
+      }
+    } catch (error) {
+      toast.error('Greška: Nešto je pošlo po zlu. Pokušajte ponovo.');
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -97,13 +118,15 @@ const Contact = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             className="lg:col-span-7 p-8 md:p-16 glass rounded-[60px] border-white/10"
           >
-            <form className="space-y-8" onSubmit={handleSubmit}>
+            <form className="space-y-8" onSubmit={handleSubmit} method="POST" action="https://api.web3forms.com/submit">
+              <input type="hidden" name="access_key" value="eb477c1a-a37f-4db0-a05a-275915bb5fd0" />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-4">
                   <label className="meta-label px-2 italic">Ime i Prezime</label>
                   <input
                     type="text"
                     required
+                    name="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/10 focus:outline-hidden focus:border-cyan-400/50 transition-all font-light"
@@ -115,6 +138,7 @@ const Contact = () => {
                   <input
                     type="text"
                     required
+                    name="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/10 focus:outline-hidden focus:border-cyan-400/50 transition-all font-light"
@@ -128,6 +152,7 @@ const Contact = () => {
                 <textarea
                   rows={4}
                   required
+                  name="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-6 text-white placeholder:text-white/10 focus:outline-hidden focus:border-cyan-400/50 transition-all font-light resize-none"

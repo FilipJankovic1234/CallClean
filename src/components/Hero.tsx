@@ -67,7 +67,7 @@ const Hero = () => {
             href="#kontakt"
             className="group relative px-12 py-5 bg-white text-black font-bold text-xs uppercase tracking-[0.2em] rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-premium"
           >
-            <span className="relative z-10">Zakaži Besplatnu Procenu</span>
+            <span className="relative z-10">Zakaži Termin</span>
             <div className="absolute inset-0 bg-cyan-400 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
           </a>
           
