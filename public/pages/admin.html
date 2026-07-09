@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="sr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Admin Portal - Knjiga Utisaka | Call Clean Premium</title>
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Tailwind Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                dark: '#090d16',
+                accent: '#22d3ee'
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+              mono: ['JetBrains Mono', 'monospace']
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Global Utilities -->
+    <style type="text/css">
+      body {
+        background-color: #090d16;
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .glass-premium {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .text-gradient {
+        background: linear-gradient(to right, #ffffff 30%, #22d3ee 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .bg-radial-glow {
+        background: radial-gradient(circle at center, rgba(34, 211, 238, 0.08) 0%, transparent 70%);
+      }
+      /* Custom elegant scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #090d16;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(34, 211, 238, 0.4);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen relative overflow-x-hidden">
+    <!-- Atmospheric Ambient Backgrounds -->
+    <div class="absolute inset-0 z-0 opacity-30 pointer-events-none">
+      <div class="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-cyan-500/10 blur-[150px]"></div>
+      <div class="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-blue-600/10 blur-[150px]"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="relative z-50 w-full glass border-b border-white/5 py-4">
+      <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <a href="/" class="group flex items-center gap-4">
+          <img 
+            src="/logo.svg" 
+            alt="Call Clean logo" 
+            class="w-12 h-12 object-contain"
+          />
+          <span class="font-serif font-bold text-lg tracking-wider text-white uppercase group-hover:text-cyan-400 transition-colors">
+            Call Clean <span class="text-xs text-cyan-400 font-mono ml-2 px-2 py-0.5 border border-cyan-400/30 rounded-full">ADMIN</span>
+          </span>
+        </a>
+
+        <div class="flex items-center gap-4">
+          <a 
+            href="/pages/utisci.html" 
+            class="px-5 py-2.5 border border-white/10 glass rounded-full text-white font-bold text-xs uppercase tracking-wider hover:bg-white/10 transition-all flex items-center gap-2"
+          >
+            Knjiga utisaka &rarr;
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="relative z-10 max-w-6xl mx-auto px-6 py-16">
+      
+      <!-- Security / Access Code Dialog Overlay -->
+      <div id="auth-overlay" class="fixed inset-0 bg-[#090d16]/95 z-[100] flex items-center justify-center p-6 transition-all duration-500">
+        <div class="glass-premium rounded-[40px] p-8 md:p-12 border border-white/10 max-w-md w-full text-center relative overflow-hidden">
+          <div class="w-16 h-16 bg-cyan-400/10 border border-cyan-400/20 rounded-3xl flex items-center justify-center mx-auto mb-6 text-cyan-400">
+            <i data-lucide="lock" class="w-8 h-8"></i>
+          </div>
+          
+          <h2 class="text-2xl font-serif font-black tracking-tight mb-2">AUTORIZACIJA</h2>
+          <p class="text-xs text-white/40 mb-8 uppercase tracking-widest font-mono">Unesite pristupni PIN za upravljanje utiscima</p>
+          
+          <form id="auth-form" class="space-y-6">
+            <input 
+              type="password" 
+              id="pin-code" 
+              required
+              placeholder="Unesite PIN kod" 
+              class="w-full text-center tracking-[0.5em] font-mono text-xl px-5 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/20 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
+            />
+            
+            <p class="text-[10px] text-cyan-400/60 font-mono">Pomoć: Podrazumevani PIN je <span class="font-bold underline text-cyan-400">clean2026</span></p>
+
+            <button 
+              type="submit" 
+              class="w-full py-4 bg-white hover:bg-cyan-400 text-black hover:text-white font-bold text-xs uppercase tracking-[0.2em] rounded-2xl transition-all shadow-premium flex items-center justify-center gap-2"
+            >
+              Pristupi panelu
+              <i data-lucide="shield-check" class="w-4 h-4"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Main Admin Dashboard (Hidden until authorized) -->
+      <div id="admin-panel" class="hidden opacity-0 transition-all duration-700 space-y-10">
+        
+        <!-- Dashboard Header -->
+        <header class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/5 pb-8">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-xs uppercase tracking-[0.3em] font-mono font-bold text-cyan-400">
+                KONTROLNA TABLA
+              </span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-[10px] uppercase tracking-wider animate-pulse flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Live sinhronizacija
+              </span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-serif font-black uppercase">
+              Upravljanje <span class="text-gradient">Utiscima</span>
+            </h1>
+          </div>
+          
+          <button 
+            id="logoutBtn"
+            class="px-5 py-2.5 border border-red-500/20 hover:border-red-500/50 hover:bg-red-500/10 rounded-full text-red-400 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2"
+          >
+            <i data-lucide="log-out" class="w-4 h-4"></i> Odjavi se
+          </button>
+        </header>
+
+        <!-- Stats Overview Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div class="glass p-6 md:p-8 rounded-3xl border border-white/5 flex items-center gap-6">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-400">
+              <i data-lucide="message-square" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <p class="text-xs text-white/40 uppercase tracking-wider font-mono">Ukupno utisaka</p>
+              <h3 id="stat-total" class="text-2xl font-serif font-bold text-white mt-1">Učitavanje...</h3>
+            </div>
+          </div>
+
+          <div class="glass p-6 md:p-8 rounded-3xl border border-white/5 flex items-center gap-6">
+            <div class="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400">
+              <i data-lucide="star" class="w-6 h-6 fill-amber-400/20"></i>
+            </div>
+            <div>
+              <p class="text-xs text-white/40 uppercase tracking-wider font-mono">Prosečna ocena</p>
+              <h3 id="stat-avg" class="text-2xl font-serif font-bold text-white mt-1">Učitavanje...</h3>
+            </div>
+          </div>
+
+          <div class="glass p-6 md:p-8 rounded-3xl border border-white/5 flex items-center gap-6">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400">
+              <i data-lucide="check-circle" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <p class="text-xs text-white/40 uppercase tracking-wider font-mono">Maksimalnih ocena (5★)</p>
+              <h3 id="stat-perfect" class="text-2xl font-serif font-bold text-white mt-1">Učitavanje...</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter and Search Bar -->
+        <div class="glass rounded-2xl p-4 flex flex-col sm:flex-row gap-4 items-center justify-between border border-white/5">
+          <div class="relative w-full sm:max-w-md">
+            <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30"></i>
+            <input 
+              type="text" 
+              id="search-input" 
+              placeholder="Pretraži po imenu ili komentaru..." 
+              class="w-full pl-11 pr-5 py-2.5 bg-white/5 border border-white/5 rounded-xl text-white text-sm focus:outline-none focus:border-cyan-400 transition-all placeholder-white/20"
+            />
+          </div>
+          
+          <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+            <label for="filter-rating" class="text-xs font-mono text-white/40 uppercase tracking-wider">Ocena:</label>
+            <select 
+              id="filter-rating" 
+              class="bg-[#090d16] border border-white/10 rounded-xl px-4 py-2 text-xs font-mono text-white/80 focus:outline-none focus:border-cyan-400"
+            >
+              <option value="all">Sve ocene</option>
+              <option value="5">5 zvezdica</option>
+              <option value="4">4 zvezdice</option>
+              <option value="3">3 zvezdice</option>
+              <option value="2">2 zvezdice</option>
+              <option value="1">1 zvezdica</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Reviews Management List -->
+        <div class="space-y-6">
+          <h2 class="text-xl font-serif font-bold tracking-tight flex items-center gap-2">
+            <i data-lucide="list-filter" class="text-cyan-400 w-5 h-5"></i>
+            Lista komentara iz baze
+          </h2>
+
+          <div id="admin-prikazUtisaka" class="space-y-4">
+            <!-- Loading template -->
+            <div class="glass rounded-3xl p-8 text-center text-white/40 font-mono text-sm flex flex-col items-center gap-4 py-20">
+              <div class="w-8 h-8 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
+              Učitavanje podataka iz baze...
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-50 w-full glass border-t border-white/5 py-8 mt-24">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/40 font-mono">
+        <p>© 2026 Call Clean Premium Admin Portal.</p>
+        <div class="flex gap-6">
+          <a href="/" class="hover:text-cyan-400 transition-colors">Početna</a>
+          <a href="/pages/utisci.html" class="hover:text-cyan-400 transition-colors">Knjiga Utisaka</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Firebase Administration Logic -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getFirestore, collection, onSnapshot, query, orderBy, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      // Firebase Config
+      const firebaseConfig = {
+        apiKey: "AIzaSyAn1xnwo7yPWhU-wnzvLpF_bqYHqv0-nVg",
+        authDomain: "callclean.firebaseapp.com",
+        projectId: "callclean",
+        storageBucket: "callclean.firebasestorage.app",
+        messagingSenderId: "1028423030446",
+        appId: "1:1028423030446:web:593c6a6d4bb9bda2fccf3f",
+        measurementId: "G-7ZL80FTY7C"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      // DOM Elements
+      const authOverlay = document.getElementById('auth-overlay');
+      const authForm = document.getElementById('auth-form');
+      const pinCodeInput = document.getElementById('pin-code');
+      const adminPanel = document.getElementById('admin-panel');
+      const logoutBtn = document.getElementById('logoutBtn');
+      const searchInput = document.getElementById('search-input');
+      const filterRating = document.getElementById('filter-rating');
+      const adminPrikaz = document.getElementById('admin-prikazUtisaka');
+
+      // Simple Auth State Persistence (Session Storage)
+      const PIN_PASSWORD = "clean2026";
+      
+      if (sessionStorage.getItem('cc_admin_authorized') === 'true') {
+        showPanelDirectly();
+      }
+
+      authForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const pin = pinCodeInput.value.trim();
+        
+        if (pin === PIN_PASSWORD) {
+          sessionStorage.setItem('cc_admin_authorized', 'true');
+          showPanelWithAnimation();
+        } else {
+          alert("Netačan PIN kod! Molimo pokušajte ponovo.");
+          pinCodeInput.value = "";
+          pinCodeInput.focus();
+        }
+      });
+
+      logoutBtn.addEventListener('click', () => {
+        sessionStorage.removeItem('cc_admin_authorized');
+        location.reload();
+      });
+
+      function showPanelDirectly() {
+        authOverlay.classList.add('hidden');
+        adminPanel.classList.remove('hidden');
+        adminPanel.classList.remove('opacity-0');
+        initRealtimeDatabase();
+      }
+
+      function showPanelWithAnimation() {
+        authOverlay.classList.add('opacity-0');
+        setTimeout(() => {
+          authOverlay.classList.add('hidden');
+          adminPanel.classList.remove('hidden');
+          setTimeout(() => {
+            adminPanel.classList.remove('opacity-0');
+            initRealtimeDatabase();
+          }, 50);
+        }, 500);
+      }
+
+      // Memory array of comments to allow filtering and searching client-side easily
+      let sveRecenzije = [];
+
+      function initRealtimeDatabase() {
+        const q = query(collection(db, "utisci"), orderBy("datum", "desc"));
+        
+        onSnapshot(q, (snapshot) => {
+          sveRecenzije = [];
+          
+          snapshot.forEach((docSnapshot) => {
+            sveRecenzije.push({
+              id: docSnapshot.id,
+              ...docSnapshot.data()
+            });
+          });
+          
+          updateDashboard();
+        }, (error) => {
+          console.error("Greška pri učitavanju baze: ", error);
+          adminPrikaz.innerHTML = `
+            <div class="glass rounded-3xl p-8 text-center text-red-400 font-mono text-sm py-16">
+              Greška pri učitavanju. Proverite Firestore bezbednosna pravila ili internet vezu.
+            </div>
+          `;
+        });
+      }
+
+      // Live search and filter event listeners
+      searchInput.addEventListener('input', updateDashboardView);
+      filterRating.addEventListener('change', updateDashboardView);
+
+      function updateDashboard() {
+        // Calculate Statistics
+        const total = sveRecenzije.length;
+        let avg = 0;
+        let perfect = 0;
+        
+        if (total > 0) {
+          const sum = sveRecenzije.reduce((acc, curr) => acc + parseInt(curr.ocena || 5), 0);
+          avg = (sum / total).toFixed(1);
+          perfect = sveRecenzije.filter(r => parseInt(r.ocena || 5) === 5).length;
+        }
+
+        document.getElementById('stat-total').textContent = total;
+        document.getElementById('stat-avg').textContent = total > 0 ? `${avg} / 5.0` : "—";
+        document.getElementById('stat-perfect').textContent = total > 0 ? `${perfect} (${Math.round((perfect/total)*100)}%)` : "—";
+
+        updateDashboardView();
+      }
+
+      function updateDashboardView() {
+        const queryStr = searchInput.value.toLowerCase().trim();
+        const ratingFilterValue = filterRating.value;
+
+        // Filter the reviews
+        const filtriraneRecenzije = sveRecenzije.filter(review => {
+          const matchingSearch = 
+            (review.ime || "").toLowerCase().includes(queryStr) || 
+            (review.komentar || "").toLowerCase().includes(queryStr);
+          
+          const matchingRating = 
+            ratingFilterValue === 'all' || 
+            parseInt(review.ocena || 5) === parseInt(ratingFilterValue);
+          
+          return matchingSearch && matchingRating;
+        });
+
+        renderReviews(filtriraneRecenzije);
+      }
+
+      function renderReviews(lista) {
+        adminPrikaz.innerHTML = "";
+        
+        if (lista.length === 0) {
+          adminPrikaz.innerHTML = `
+            <div class="glass rounded-3xl p-16 text-center text-white/30 font-light text-sm">
+              <i data-lucide="help-circle" class="w-12 h-12 mx-auto mb-4 text-cyan-400/20"></i>
+              Nije pronađen nijedan komentar koji odgovara kriterijumima pretrage.
+            </div>
+          `;
+          lucide.createIcons();
+          return;
+        }
+
+        lista.forEach(review => {
+          let datumPrikaz = "Neznatno vreme";
+          if (review.datum) {
+            const dateObj = review.datum.toDate ? review.datum.toDate() : new Date(review.datum);
+            datumPrikaz = dateObj.toLocaleDateString('sr-RS', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric'
+            }) + ' u ' + dateObj.toLocaleTimeString('sr-RS', {
+              hour: '2-digit',
+              minute: '2-digit'
+            });
+          }
+
+          // Stars rating visualization
+          const ratingStars = parseInt(review.ocena || 5);
+          let starsHtml = '';
+          for (let i = 1; i <= 5; i++) {
+            if (i <= ratingStars) {
+              starsHtml += `<i data-lucide="star" class="w-3.5 h-3.5 text-cyan-400 fill-cyan-400"></i>`;
+            } else {
+              starsHtml += `<i data-lucide="star" class="w-3.5 h-3.5 text-white/10"></i>`;
+            }
+          }
+
+          // Build row structure
+          const article = document.createElement('article');
+          article.className = "p-6 md:p-8 glass rounded-3xl border border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:border-white/10 transition-all duration-300";
+          article.innerHTML = `
+            <div class="flex-1 space-y-3">
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="font-serif font-black text-white text-base">${escapeHtml(review.ime)}</span>
+                <span class="text-[10px] text-white/30 font-mono font-bold uppercase tracking-widest bg-white/5 px-2.5 py-1 rounded-md">${datumPrikaz}</span>
+                <div class="flex gap-0.5">
+                  ${starsHtml}
+                </div>
+              </div>
+              <p class="text-white/70 text-sm italic font-light leading-relaxed">
+                "${escapeHtml(review.komentar)}"
+              </p>
+            </div>
+            
+            <button 
+              data-id="${review.id}"
+              class="delete-review-btn w-full md:w-auto px-5 py-3 bg-red-500/10 hover:bg-red-500 text-red-400 hover:text-white border border-red-500/20 hover:border-red-500 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 group-hover:scale-105"
+            >
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+              Obriši utisak
+            </button>
+          `;
+
+          // Add click event for the delete button specifically to prevent standard inline events
+          const deleteBtn = article.querySelector('.delete-review-btn');
+          deleteBtn.addEventListener('click', async () => {
+            const docId = deleteBtn.getAttribute('data-id');
+            const confirmDelete = confirm(`Da li ste sigurni da želite da obrišete ovaj utisak korisnika "${review.ime}"? Ova akcija je trajna i nepovratna.`);
+            
+            if (confirmDelete) {
+              try {
+                // Change state to deleting visually first
+                deleteBtn.disabled = true;
+                deleteBtn.innerHTML = `<span class="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></span> Brisanje...`;
+                
+                await deleteDoc(doc(db, "utisci", docId));
+                // Successful deletion alert is handled naturally by real-time snapshot updating the view
+              } catch (err) {
+                console.error("Greška pri brisanju dokumenta: ", err);
+                alert("Greška: Nemate dozvolu za brisanje ili je došlo do problema sa mrežom.");
+                // Restore button state
+                deleteBtn.disabled = false;
+                deleteBtn.innerHTML = `<i data-lucide="trash-2" class="w-4 h-4"></i> Obriši utisak`;
+                lucide.createIcons();
+              }
+            }
+          });
+
+          adminPrikaz.appendChild(article);
+        });
+
+        // Instantiate Lucide icons
+        lucide.createIcons();
+      }
+
+      // Escaping HTML safely
+      function escapeHtml(string) {
+        return String(string).replace(/[&<>"']/g, function (s) {
+          return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+          }[s];
+        });
+      }
+
+      // Initial Lucide setup
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

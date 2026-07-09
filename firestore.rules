@@ -14,6 +14,9 @@ service cloud.firestore {
       
       // Publicly writable under strict validation
       allow create: if isValidUtisak(request.resource.data);
+
+      // Public deletion for administration purposes
+      allow delete: if true;
     }
 
     // Structural and type validation helpers
