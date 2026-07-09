@@ -6,7 +6,7 @@ const FloatingButtons = () => {
   return (
     <div className="fixed bottom-8 left-8 z-50 flex flex-col gap-4">
       <motion.a
-        href="https://wa.me/+381653201671"
+        href="https://wa.me/381653201671"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Kontaktirajte nas na WhatsApp-u za čišćenje"
