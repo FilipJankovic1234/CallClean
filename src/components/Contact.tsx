@@ -3,6 +3,11 @@ import { motion } from 'motion/react';
 import { MessageCircle, Phone, MapPin, Send } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
+// Web3Forms Access Key za primanje poruka na Vaš email.
+// Da promenite email na callclean83@gmail.com, idite na https://web3forms.com/,
+// unesite callclean83@gmail.com da dobijete novi Access Key, i zamenite vrednost ispod:
+const WEB3FORMS_ACCESS_KEY = "eb477c1a-a37f-4db0-a05a-275915bb5fd0";
+
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [formData, setFormData] = React.useState({
@@ -27,7 +32,7 @@ const Contact = () => {
           Accept: "application/json"
         },
         body: JSON.stringify({
-          access_key: "eb477c1a-a37f-4db0-a05a-275915bb5fd0",
+          access_key: WEB3FORMS_ACCESS_KEY,
           name: formData.name,
           email: formData.email,
           message: formData.message
