@@ -21,7 +21,7 @@ const Footer = () => {
               <div className="relative w-32 h-32 flex items-center justify-center -ml-6">
                 <img 
                   src="/logo.svg" 
-                  alt="CALL CLEAN Logo" 
+                  alt="Profesionalno čišćenje stanova Beograd - Call Clean agencija logo" 
                   className="w-full h-full object-contain opacity-90 group-hover:scale-105 transition-transform"
                 />
               </div>
@@ -31,14 +31,15 @@ const Footer = () => {
             </p>
             <div className="flex gap-4">
               {[
-                { Icon: Instagram, href: "https://www.instagram.com/ciscenje_call_clean1/" },
-                { Icon: MessageCircle, href: "https://wa.me/381653201671" }
-              ].map(({ Icon, href }, i) => (
+                { Icon: Instagram, href: "https://www.instagram.com/ciscenje_call_clean1/", label: "Posetite naš Instagram profil" },
+                { Icon: MessageCircle, href: "https://wa.me/381653201671", label: "Pošaljite nam poruku na WhatsApp" }
+              ].map(({ Icon, href, label }, i) => (
                 <a
                   key={i}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={label}
                   className="w-12 h-12 rounded-2xl glass flex items-center justify-center text-white/40 hover:bg-cyan-400 hover:text-white transition-all duration-500"
                 >
                   <Icon size={18} />
@@ -48,7 +49,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="meta-label text-cyan-400 mb-10">Usluge</h4>
+            <h3 className="meta-label text-cyan-400 mb-10">Usluge</h3>
             <ul className="space-y-5">
               {[
                 { label: 'Čišćenje stanova', href: '#usluge' },
@@ -66,7 +67,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="meta-label text-cyan-400 mb-10">Brzi Linkovi</h4>
+            <h3 className="meta-label text-cyan-400 mb-10">Brzi Linkovi</h3>
             <ul className="space-y-5">
               {[
                 { label: 'Zašto Mi?', href: '#zasto-mi' },
@@ -84,7 +85,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="meta-label text-cyan-400 mb-10">Lokacije</h4>
+            <h3 className="meta-label text-cyan-400 mb-10">Lokacije</h3>
             <p className="text-[10px] text-white/40 font-mono leading-loose uppercase tracking-widest">
               Novi Beograd • Vračar • Zvezdara • Voždovac • Dedinje • Senjak • Zemun • Centar • Mali Mokri Lug
             </p>

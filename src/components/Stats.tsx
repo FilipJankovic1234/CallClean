@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion, useInView } from 'motion/react';
-import { Users, Truck, ShieldCheck, Zap, Award, History } from 'lucide-react';
 
 const StatCard = ({ label, val, suffix = '' }: any) => {
   const ref = React.useRef(null);
@@ -35,7 +34,6 @@ const Counter = ({ value }: { value: number }) => {
     let start = 0;
     const end = value;
     const duration = 2500;
-    const frames = Math.min(200, end); // Prevents too many intervals for high numbers
     const increment = end / (duration / 16);
 
     const timer = setInterval(() => {

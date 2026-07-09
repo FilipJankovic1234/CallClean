@@ -74,13 +74,13 @@ const Contact = () => {
                 </div>
                 <div>
                   <span className="meta-label text-xs block mb-1">WhatsApp / Viber</span>
-                  <span className="text-xl md:text-2xl font-serif font-bold group-hover:text-green-400 transition-colors tracking-tight">Dostupni 24/7</span>
+                  <span className="text-xl md:text-2xl font-serif font-bold group-hover:text-green-400 transition-colors tracking-tight">Dostupni 08-20h</span>
                 </div>
               </a>
             </div>
 
             <div className="p-8 glass-dark rounded-[40px] border-white/5">
-              <h4 className="meta-label mb-4">Radno Vreme</h4>
+              <h3 className="meta-label mb-4">Radno Vreme</h3>
               <div className="flex justify-between text-xs text-white/60 font-mono mb-2">
                 <span>Ponedeljak - Subota</span>
                 <span>08:00 - 20:00</span>

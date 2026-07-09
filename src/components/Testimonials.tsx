@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Quote, Star, Plus, X, Send, CheckCircle2 } from 'lucide-react';
+import React from 'react';
+import { motion } from 'motion/react';
+import { Quote, Star } from 'lucide-react';
 
 const initialTestimonials = [
   {
@@ -27,7 +27,7 @@ const initialTestimonials = [
 ];
 
 const Testimonials = () => {
-  const [list, setList] = useState(initialTestimonials);
+  const list = initialTestimonials;
 
   return (
     <section id="utisci" className="py-32 bg-brand-dark relative overflow-hidden">
@@ -84,7 +84,7 @@ const Testimonials = () => {
               <div className="flex items-center gap-6 border-t border-white/5 pt-10">
                 <img
                   src={item.avatar}
-                  alt={item.name}
+                  alt={"Klijent Call Clean agencije - " + item.name + ", " + item.role}
                   className="w-16 h-16 rounded-3xl object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                 />
                 <div>

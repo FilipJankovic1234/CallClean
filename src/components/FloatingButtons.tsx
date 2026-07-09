@@ -9,6 +9,7 @@ const FloatingButtons = () => {
         href="https://wa.me/+381653201671"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Kontaktirajte nas na WhatsApp-u za čišćenje"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         whileHover={{ scale: 1.1, x: 5 }}
@@ -21,6 +22,7 @@ const FloatingButtons = () => {
         href="https://www.instagram.com/ciscenje_call_clean1/"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Zapratite Call Clean na Instagram-u"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.1 }}

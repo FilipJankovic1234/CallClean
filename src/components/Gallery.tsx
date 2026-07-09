@@ -56,7 +56,7 @@ const Gallery = () => {
             >
               <img
                 src={img.url}
-                alt={img.title}
+                alt={"Call Clean agencija - " + img.title}
                 className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110 ease-out grayscale-[0.5] group-hover:grayscale-0"
               />
               <div className="absolute inset-0 bg-linear-to-t from-brand-dark via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />

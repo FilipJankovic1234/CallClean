@@ -42,6 +42,7 @@ const Hero = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="text-[12vw] md:text-[8vw] lg:text-[120px] font-serif font-black leading-[0.85] tracking-[-0.04em] mb-12 uppercase italic"
         >
+          <span className="sr-only">Profesionalno čišćenje stanova i kancelarija – Call Clean Beograd</span>
           Čišćenje <br />
           <span className="text-white/20">koje menja</span> <br />
           Vaš <span className="text-gradient">Standard.</span>

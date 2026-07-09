@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -48,7 +48,7 @@ const Navbar = () => {
             <div className="relative w-16 h-16 md:w-28 md:h-28 flex items-center justify-center -my-2 md:-my-6">
               <img 
                 src="/logo.svg" 
-                alt="CALL CLEAN Logo" 
+                alt="Profesionalno čišćenje Beograd - Call Clean logo" 
                 className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(34,211,238,0.2)] scale-150 transition-transform duration-700 group-hover:scale-110"
               />
             </div>

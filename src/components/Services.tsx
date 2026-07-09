@@ -7,37 +7,43 @@ const services = [
     title: 'Čišćenje stanova',
     desc: 'Ekskluzivno čišćenje stanova u Beogradu, od Novog Beograda do Zvezdare. Pedantnost bez kompromisa.',
     icon: <Home className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&q=80&w=1200'
+    image: 'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&q=80&w=1200',
+    alt: 'Agencija Call Clean - profesionalno čišćenje dnevne sobe i stanova u Beogradu'
   },
   {
     title: 'Poslovni prostori',
     desc: 'Profesionalno održavanje kancelarija i poslovnih objekata. Higijena koja podiže vaš poslovni ugled.',
     icon: <Building2 className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1200'
+    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1200',
+    alt: 'Call Clean Beograd - čišćenje i održavanje kancelarija i poslovnih prostora'
   },
   {
     title: 'Dubinsko čišćenje',
     desc: 'Specijalizovano dubinsko čišćenje nameštaja i tepiha najsavremenijim mašinama u svim delovima grada.',
     icon: <Sparkles className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&q=80&w=1200'
+    image: 'https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&q=80&w=1200',
+    alt: 'Dubinsko pranje i čišćenje nameštaja u Beogradu - Call Clean servis'
   },
   {
     title: 'Generalno čišćenje',
     desc: 'Sveobuhvatna higijenska rešenja za kuće i stanove. Idealno za sezonsko održavanje i praznike.',
     icon: <Clock className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1528740561666-dc2479dc08ab?auto=format&fit=crop&q=80&w=1200'
+    image: 'https://images.unsplash.com/photo-1528740561666-dc2479dc08ab?auto=format&fit=crop&q=80&w=1200',
+    alt: 'Generalno čišćenje i održavanje kuća i stanova Beograd - Call Clean'
   },
   {
     title: 'Nakon renoviranja',
     desc: 'Grubi i fini radovi čišćenja nakon građevinskih intervencija. Brzo uklanjanje prašine i fleka.',
     icon: <Construction className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1505798577917-a65157d3320a?auto=format&fit=crop&q=80&w=1200'
+    image: 'https://images.unsplash.com/photo-1505798577917-a65157d3320a?auto=format&fit=crop&q=80&w=1200',
+    alt: 'Čišćenje nakon građevinskih radova i renoviranja u Beogradu - Call Clean'
   },
   {
     title: 'Pranje prozora',
     desc: 'Profesionalno pranje staklenih površina na svim visinama. Kristalno čist pogled za vaš dom ili kancelariju.',
     icon: <Layers className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&q=80&w=1200'
+    image: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&q=80&w=1200',
+    alt: 'Profesionalno pranje prozora i staklenih površina na visinama u Beogradu'
   }
 ];
 
@@ -98,7 +104,7 @@ const Services = () => {
               <div className="absolute inset-0 z-0 transition-all duration-1000">
                 <img
                   src={service.image}
-                  alt={service.title}
+                  alt={service.alt}
                   className="w-full h-full object-cover scale-100 group-hover:scale-110 transition-all duration-1000 opacity-60 group-hover:opacity-80"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-brand-dark via-transparent to-transparent" />
