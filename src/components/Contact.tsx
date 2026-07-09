@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 // Web3Forms Access Key za primanje poruka na Vaš email.
 // Da promenite email na callclean83@gmail.com, idite na https://web3forms.com/,
 // unesite callclean83@gmail.com da dobijete novi Access Key, i zamenite vrednost ispod:
-const WEB3FORMS_ACCESS_KEY = "eb477c1a-a37f-4db0-a05a-275915bb5fd0";
+const WEB3FORMS_ACCESS_KEY = "ecc089fe-70c3-460b-a96a-c9dc15874f8a";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -124,7 +124,7 @@ const Contact = () => {
             className="lg:col-span-7 p-8 md:p-16 glass rounded-[60px] border-white/10"
           >
             <form className="space-y-8" onSubmit={handleSubmit} method="POST" action="https://api.web3forms.com/submit">
-              <input type="hidden" name="access_key" value="eb477c1a-a37f-4db0-a05a-275915bb5fd0" />
+              <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-4">
                   <label className="meta-label px-2 italic">Ime i Prezime</label>
