@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Home, Sparkles, Building2, Clock, Construction, Layers, ArrowRight } from 'lucide-react';
+import { Home, Sparkles, Building2, Clock, Construction, Layers, ArrowRight, Play } from 'lucide-react';
 
 const services = [
   {
@@ -120,16 +120,35 @@ const Services = () => {
                 <div className="absolute inset-0 bg-linear-to-t from-brand-dark via-transparent to-transparent" />
               </div>
 
+              {/* Floating Center Play Button - Premium interactive cue to watch video */}
+              <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+                <div className="w-14 h-14 rounded-full bg-brand-dark/70 border border-cyan-400/30 text-cyan-400 flex items-center justify-center backdrop-blur-md shadow-lg shadow-cyan-400/5 transform transition-all duration-500 scale-100 group-hover:scale-110 group-hover:bg-cyan-400 group-hover:text-black group-hover:border-cyan-300 group-hover:shadow-cyan-400/40">
+                  <Play className="w-5 h-5 fill-current ml-0.5" />
+                </div>
+              </div>
+
               <div className="relative z-10 flex justify-between items-start">
                 <div className="text-cyan-400 opacity-50 group-hover:opacity-100 transition-opacity">
                   {service.icon}
                 </div>
-                <div className="font-mono text-white/10 text-4xl font-bold group-hover:text-cyan-400/20 transition-colors">
-                  0{i + 1}
+                <div className="flex flex-col items-end gap-1.5">
+                  <div className="font-mono text-white/10 text-4xl font-bold group-hover:text-cyan-400/20 transition-colors">
+                    0{i + 1}
+                  </div>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 rounded-sm text-[8px] font-mono tracking-wider font-bold uppercase transition-all duration-300 group-hover:bg-cyan-400 group-hover:text-black">
+                    <Play className="w-1.5 h-1.5 fill-current" /> VIDEO REEL
+                  </span>
                 </div>
               </div>
 
               <div className="relative z-10">
+                <div className="flex items-center gap-1.5 text-[9px] uppercase tracking-[0.2em] font-mono font-bold text-cyan-400/80 mb-3">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-cyan-400"></span>
+                  </span>
+                  <span>Kliknite za video prikaz rada</span>
+                </div>
                 <h3 className="text-3xl font-serif font-bold text-white mb-4 group-hover:translate-x-2 transition-transform duration-500">
                   {service.title}
                 </h3>
@@ -137,9 +156,9 @@ const Services = () => {
                   {service.desc}
                 </p>
                 <span
-                  className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-bold text-cyan-400 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500"
+                  className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-bold text-cyan-400 transition-all duration-500 opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 group-hover:opacity-100 group-hover:translate-y-0"
                 >
-                  Pogledaj snimak <ArrowRight className="w-3 h-3" />
+                  Pogledaj snimak <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </span>
               </div>
 
