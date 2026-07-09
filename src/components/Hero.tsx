@@ -40,12 +40,12 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[12vw] md:text-[8vw] lg:text-[120px] font-serif font-black leading-[0.85] tracking-[-0.04em] mb-12 uppercase italic"
+          className="text-[8vw] md:text-[6vw] lg:text-[80px] font-serif font-black leading-[1.0] tracking-[-0.03em] mb-12 uppercase italic"
         >
-          <span className="sr-only">Profesionalno čišćenje stanova i kancelarija – Call Clean Beograd</span>
-          Čišćenje <br />
-          <span className="text-white/20">koje menja</span> <br />
-          Vaš <span className="text-gradient">Standard.</span>
+          Vaš dom, naša briga. <br />
+          <span className="text-gradient text-[4.5vw] md:text-[3.5vw] lg:text-[42px] font-sans font-normal tracking-[0.02em] block mt-4 normal-case not-italic text-white">
+            Profesionalno čišćenje stanova – Call Clean Beograd
+          </span>
         </motion.h1>
 
         <motion.p
