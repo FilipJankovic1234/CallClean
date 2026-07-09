@@ -72,7 +72,7 @@ const Footer = () => {
               {[
                 { label: 'Zašto Mi?', href: '#zasto-mi' },
                 { label: 'Galerija Radova', href: '#galerija' },
-                { label: 'Knjiga Utisaka', href: '/pages/utisci.html' },
+                { label: 'Knjiga Utisaka', href: '#utisci' },
                 { label: 'FAQ - Pitanja', href: '#faq' },
                 { label: 'Kontakt Portal', href: '#kontakt' }
               ].map((link) => (
