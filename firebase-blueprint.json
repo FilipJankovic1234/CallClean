@@ -1,0 +1,35 @@
+{
+  "entities": {
+    "utisak": {
+      "title": "Utisak",
+      "description": "Recenzija ili komentar klijenta o agenciji Call Clean",
+      "type": "object",
+      "properties": {
+        "ime": {
+          "type": "string",
+          "description": "Ime i prezime ili naziv firme klijenta"
+        },
+        "komentar": {
+          "type": "string",
+          "description": "Sadržaj utiska ili komentara"
+        },
+        "ocena": {
+          "type": "number",
+          "description": "Ocena od 1 do 5 zvezdica"
+        },
+        "datum": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Vreme ostavljanja utiska"
+        }
+      },
+      "required": ["ime", "komentar", "ocena", "datum"]
+    }
+  },
+  "firestore": {
+    "/utisci/{utisakId}": {
+      "schema": "utisak",
+      "description": "Kolekcija svih utisaka ostavljenih u knjizi utisaka"
+    }
+  }
+}

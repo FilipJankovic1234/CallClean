@@ -99,6 +99,20 @@ const Testimonials = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mt-16 text-center"
+        >
+          <a
+            href="/pages/utisci.html"
+            className="inline-flex items-center gap-3 px-8 py-4 border border-white/10 glass rounded-full text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-cyan-400 hover:text-black hover:border-cyan-400 transition-all duration-500 shadow-premium"
+          >
+            Pogledajte sve utiske ili ostavite vaš &rarr;
+          </a>
+        </motion.div>
       </div>
     </section>
   );

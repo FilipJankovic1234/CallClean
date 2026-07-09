@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global safety net: default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Collection: utisci (Knjiga utisaka)
+    match /utisci/{utisakId} {
+      // Publicly viewable
+      allow read: if true;
+      
+      // Publicly writable under strict validation
+      allow create: if isValidUtisak(request.resource.data);
+    }
+
+    // Structural and type validation helpers
+    function isValidUtisak(data) {
+      return data.keys().hasAll(['ime', 'komentar', 'ocena', 'datum'])
+        && data.keys().size() == 4
+        && data.ime is string
+        && data.ime.size() >= 2
+        && data.ime.size() <= 100
+        && data.komentar is string
+        && data.komentar.size() >= 3
+        && data.komentar.size() <= 5000
+        && data.ocena is int
+        && data.ocena >= 1
+        && data.ocena <= 5
+        && data.datum is timestamp;
+    }
+  }
+}
