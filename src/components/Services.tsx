@@ -8,42 +8,48 @@ const services = [
     desc: 'Ekskluzivno čišćenje stanova u Beogradu, od Novog Beograda do Zvezdare. Pedantnost bez kompromisa.',
     icon: <Home className="w-8 h-8" />,
     image: 'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&q=80&w=1200',
-    alt: 'Agencija Call Clean - profesionalno čišćenje dnevne sobe i stanova u Beogradu'
+    alt: 'Agencija Call Clean - profesionalno čišćenje dnevne sobe i stanova u Beogradu',
+    link: 'https://www.instagram.com/reel/C6ZtShxItHt/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
   },
   {
     title: 'Poslovni prostori',
     desc: 'Profesionalno održavanje kancelarija i poslovnih objekata. Higijena koja podiže vaš poslovni ugled.',
     icon: <Building2 className="w-8 h-8" />,
     image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1200',
-    alt: 'Call Clean Beograd - čišćenje i održavanje kancelarija i poslovnih prostora'
+    alt: 'Call Clean Beograd - čišćenje i održavanje kancelarija i poslovnih prostora',
+    link: 'https://www.instagram.com/reel/CzRUcKeIsra/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
   },
   {
     title: 'Dubinsko čišćenje',
     desc: 'Specijalizovano dubinsko čišćenje nameštaja i tepiha najsavremenijim mašinama u svim delovima grada.',
     icon: <Sparkles className="w-8 h-8" />,
     image: 'https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&q=80&w=1200',
-    alt: 'Dubinsko pranje i čišćenje nameštaja u Beogradu - Call Clean servis'
+    alt: 'Dubinsko pranje i čišćenje nameštaja u Beogradu - Call Clean servis',
+    link: 'https://www.instagram.com/reel/DKZvMqSIec9/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
   },
   {
     title: 'Generalno čišćenje',
     desc: 'Sveobuhvatna higijenska rešenja za kuće i stanove. Idealno za sezonsko održavanje i praznike.',
     icon: <Clock className="w-8 h-8" />,
     image: 'https://images.unsplash.com/photo-1528740561666-dc2479dc08ab?auto=format&fit=crop&q=80&w=1200',
-    alt: 'Generalno čišćenje i održavanje kuća i stanova Beograd - Call Clean'
+    alt: 'Generalno čišćenje i održavanje kuća i stanova Beograd - Call Clean',
+    link: 'https://www.instagram.com/reel/C_ITsClIzZc/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
   },
   {
     title: 'Nakon renoviranja',
     desc: 'Grubi i fini radovi čišćenja nakon građevinskih intervencija. Brzo uklanjanje prašine i fleka.',
     icon: <Construction className="w-8 h-8" />,
     image: 'https://images.unsplash.com/photo-1505798577917-a65157d3320a?auto=format&fit=crop&q=80&w=1200',
-    alt: 'Čišćenje nakon građevinskih radova i renoviranja u Beogradu - Call Clean'
+    alt: 'Čišćenje nakon građevinskih radova i renoviranja u Beogradu - Call Clean',
+    link: 'https://www.instagram.com/reel/C3-rbjEI7GH/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
   },
   {
     title: 'Pranje prozora',
     desc: 'Profesionalno pranje staklenih površina na svim visinama. Kristalno čist pogled za vaš dom ili kancelariju.',
     icon: <Layers className="w-8 h-8" />,
     image: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&q=80&w=1200',
-    alt: 'Profesionalno pranje prozora i staklenih površina na visinama u Beogradu'
+    alt: 'Profesionalno pranje prozora i staklenih površina na visinama u Beogradu',
+    link: 'https://www.instagram.com/reel/DJRdYmOon9z/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
   }
 ];
 
@@ -92,13 +98,17 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5 rounded-[40px] overflow-hidden">
           {services.map((service, i) => (
-            <motion.div
+            <motion.a
               key={i}
+              href={service.link}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="group relative h-[500px] bg-brand-dark p-12 flex flex-col justify-between overflow-hidden"
+              style={{ textDecoration: 'none', color: 'inherit' }}
+              className="group relative h-[500px] bg-brand-dark p-12 flex flex-col justify-between overflow-hidden cursor-pointer"
             >
               {/* Background Reveal on Hover */}
               <div className="absolute inset-0 z-0 transition-all duration-1000">
@@ -126,17 +136,16 @@ const Services = () => {
                 <p className="text-white/40 text-sm leading-relaxed mb-8 max-w-xs group-hover:text-white/80 transition-colors duration-500">
                   {service.desc}
                 </p>
-                <motion.a
-                  href="#kontakt"
+                <span
                   className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-bold text-cyan-400 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500"
                 >
-                  Zakaži odmah <ArrowRight className="w-3 h-3" />
-                </motion.a>
+                  Pogledaj snimak <ArrowRight className="w-3 h-3" />
+                </span>
               </div>
 
               {/* Decorative Corner */}
               <div className="absolute bottom-0 right-0 w-24 h-24 bg-cyan-400/5 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity translate-x-12 translate-y-12" />
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
