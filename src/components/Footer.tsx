@@ -71,7 +71,6 @@ const Footer = () => {
             <ul className="space-y-5">
               {[
                 { label: 'Zašto Mi?', href: '#zasto-mi' },
-                { label: 'Galerija Radova', href: '#galerija' },
                 { label: 'Knjiga Utisaka', href: '#utisci' },
                 { label: 'FAQ - Pitanja', href: '#faq' },
                 { label: 'Kontakt Portal', href: '#kontakt' }

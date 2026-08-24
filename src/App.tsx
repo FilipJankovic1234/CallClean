@@ -9,7 +9,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Stats from './components/Stats';
-import Gallery from './components/Gallery';
 import Process from './components/Process';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
@@ -60,7 +59,6 @@ export default function App() {
             <Hero />
             <Services />
             <Stats />
-            <Gallery />
             <Process />
             <Testimonials />
             <WhyUs />

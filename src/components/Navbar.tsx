@@ -18,7 +18,6 @@ const Navbar = () => {
     { name: 'Početna', href: '#' },
     { name: 'Usluge', href: '#usluge' },
     { name: 'Zašto mi', href: '#zasto-mi' },
-    { name: 'Galerija', href: '#galerija' },
     { name: 'FAQ', href: '#faq' },
     { name: 'Kontakt', href: '#kontakt' },
   ];
